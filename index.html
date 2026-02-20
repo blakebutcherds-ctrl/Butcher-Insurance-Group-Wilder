@@ -9,13 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-dark: #1c1c1c;
-      --bg-hero: #252525;
+      --bg-dark: #0f0f0f;
+      --bg-card: #1a1a1a;
       --text: #ffffff;
       --text-muted: #a0a0a0;
       --accent-orange: #e86326;
       --accent-green: #5cb85c;
-      --radius: 8px;
+      --radius: 10px;
+      --section-pad: 5rem 1.5rem;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -28,7 +29,19 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Header — matches reference: logo left, dark button right */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Top strip — Pipeline "Limited spots" style */
+    .top-strip {
+      text-align: center;
+      padding: 0.6rem 1rem;
+      background: var(--bg-card);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Header */
     .header {
       display: flex;
       align-items: center;
@@ -40,11 +53,7 @@
       right: 0;
       z-index: 10;
     }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
+    .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.02em; }
     .logo span { font-size: 0.75em; vertical-align: super; }
     .brand-link {
       display: inline-block;
@@ -59,35 +68,47 @@
     }
     .brand-link:hover { background: rgba(55, 55, 55, 0.95); }
 
-    /* Hero — newly built Florida-style home (no reference image), dark overlay for text */
+    /* Hero — Pipeline style: big headline, subhead, proof, CTA */
     .hero {
       position: relative;
-      min-height: 72vh;
+      min-height: 75vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.55)),
         url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80') center/cover no-repeat;
-      padding: 7rem 1.5rem 5rem;
+      padding: 8rem 1.5rem 5rem;
     }
     .hero-content { max-width: 720px; }
+    .hero-badge {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(255,255,255,0.1);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border-radius: 999px;
+      color: var(--text-muted);
+    }
     .hero h1 {
       margin: 0 0 1.25rem;
-      font-size: clamp(1.85rem, 4.5vw, 2.85rem);
+      font-size: clamp(2rem, 5vw, 3.25rem);
       font-weight: 700;
-      line-height: 1.25;
+      line-height: 1.2;
       letter-spacing: -0.02em;
     }
     .hero .subhead {
-      margin: 0 0 2rem;
-      font-size: clamp(0.95rem, 2vw, 1.12rem);
+      margin: 0 0 1.5rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.5;
     }
+    .hero-proof { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
     .btn {
       display: inline-block;
-      padding: 0.95rem 1.85rem;
+      padding: 1rem 2rem;
       font-family: inherit;
       font-size: 1rem;
       font-weight: 600;
@@ -101,72 +122,155 @@
     .btn-orange { background: var(--accent-orange); color: white; }
     .btn-green { background: var(--accent-green); color: white; }
 
-    /* Sections — solid dark like reference */
-    section {
-      padding: 4.5rem 2rem;
-      max-width: 880px;
-      margin: 0 auto;
+    /* Stats row — Pipeline 4-card stats */
+    .stats { padding: var(--section-pad); margin-top: -3rem; position: relative; z-index: 2; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      padding: 1.75rem;
+      border-radius: var(--radius);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .stat-value { font-size: 1.75rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 0.25rem; }
+    .stat-label { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* Old Way vs New Way — Pipeline comparison */
+    .comparison {
+      padding: var(--section-pad);
       background: var(--bg-dark);
     }
-    section h2 {
-      margin: 0 0 1.5rem;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 700;
+    .comparison .container { max-width: 900px; }
+    .comparison h2 { text-align: center; margin-bottom: 2.5rem; font-size: clamp(1.5rem, 3vw, 2rem); }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
     }
+    @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+    .compare-col {
+      background: var(--bg-card);
+      padding: 1.75rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .compare-col.bad { border-color: rgba(232, 99, 38, 0.2); }
+    .compare-col.good { border-color: rgba(92, 184, 92, 0.25); }
+    .compare-title { font-weight: 700; margin-bottom: 1rem; font-size: 1.1rem; }
+    .compare-col.bad .compare-title { color: var(--text-muted); }
+    .compare-col.good .compare-title { color: var(--accent-green); }
+    .compare-col ul { margin: 0; padding-left: 1.25rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    .compare-col.good ul { color: rgba(255,255,255,0.85); }
 
-    /* Benefits — orange stars, same copy */
-    .benefits ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    /* Framework — "How We Bring You More Leads" style */
+    .framework { padding: var(--section-pad); background: var(--bg-card); }
+    .framework .section-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-orange); margin-bottom: 0.5rem; }
+    .framework h2 { margin-bottom: 1rem; font-size: clamp(1.5rem, 3vw, 2rem); }
+    .framework .intro { color: var(--text-muted); margin-bottom: 2.5rem; max-width: 600px; }
+    .framework-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
     }
-    .benefits li {
+    .framework-step {
+      background: var(--bg-dark);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .framework-step .num { font-size: 1.5rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 0.5rem; }
+    .framework-step h3 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+    .framework-step p { margin: 0; font-size: 0.95rem; color: var(--text-muted); }
+
+    /* What's Included — Pipeline "Everything Done For You" grid */
+    .included { padding: var(--section-pad); background: var(--bg-dark); }
+    .included .section-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-orange); margin-bottom: 0.5rem; }
+    .included h2 { margin-bottom: 0.5rem; }
+    .included .subtitle { color: var(--text-muted); margin-bottom: 2.5rem; }
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .included-item {
       display: flex;
       align-items: flex-start;
       gap: 0.75rem;
-      margin-bottom: 1.1rem;
-      font-size: 1.05rem;
-      color: var(--text-muted);
+      padding: 1.25rem;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.06);
     }
-    .benefits li strong { color: var(--text); }
-    .star { color: var(--accent-orange); font-size: 1.15rem; flex-shrink: 0; }
+    .included-item .icon { color: var(--accent-orange); font-size: 1.25rem; flex-shrink: 0; }
+    .included-item strong { display: block; margin-bottom: 0.25rem; }
+    .included-item span { font-size: 0.9rem; color: var(--text-muted); }
 
-    /* Testimonial — green link + green CTA */
-    .testimonial blockquote {
-      margin: 0 0 1rem;
-      font-size: 1.15rem;
-      font-style: italic;
-      color: var(--text-muted);
-    }
-    .testimonial .attribution {
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
-    }
-    .testimonial .attribution a {
-      color: var(--accent-green);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .testimonial .attribution a:hover { text-decoration: underline; }
+    /* The Difference — Pipeline comparison table style */
+    .difference { padding: var(--section-pad); background: var(--bg-card); }
+    .difference .section-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-orange); margin-bottom: 0.5rem; }
+    .difference h2 { margin-bottom: 1rem; }
+    .difference .tagline { color: var(--text-muted); margin-bottom: 2rem; }
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 640px) { .diff-grid { grid-template-columns: 1fr; } }
+    .diff-col { padding: 1.5rem; border-radius: var(--radius); }
+    .diff-col.old { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+    .diff-col.new { background: rgba(92, 184, 92, 0.08); border: 1px solid rgba(92, 184, 92, 0.2); }
+    .diff-col h3 { margin: 0 0 1rem; font-size: 1.1rem; }
+    .diff-col.old h3 { color: var(--text-muted); }
+    .diff-col.new h3 { color: var(--accent-green); }
+    .diff-col ul { margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.8; color: var(--text-muted); }
+    .diff-col.new ul { color: rgba(255,255,255,0.9); }
 
-    /* Trust signals — centered, partner names */
-    .trust { padding-bottom: 3rem; }
-    .trust h2 { text-align: center; margin-bottom: 2rem; }
-    .trust-logos {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
+    /* Testimonials — Pipeline "Partners Getting Real Results" grid */
+    .testimonials { padding: var(--section-pad); background: var(--bg-dark); }
+    .testimonials .section-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-orange); margin-bottom: 0.5rem; }
+    .testimonials h2 { margin-bottom: 2rem; }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
-    .trust-logos span {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.88);
+    .testimonial-card {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.06);
     }
+    .testimonial-card blockquote { margin: 0 0 1rem; font-size: 0.95rem; font-style: italic; color: var(--text-muted); line-height: 1.6; }
+    .testimonial-card .name { font-weight: 600; }
+    .testimonial-card .role { font-size: 0.85rem; color: var(--text-muted); }
 
-    /* Footer — centered disclaimer */
+    /* Trust signals */
+    .trust { padding: var(--section-pad); background: var(--bg-card); text-align: center; }
+    .trust h2 { margin-bottom: 2rem; }
+    .trust-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+    .trust-logos span { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.06em; color: rgba(255,255,255,0.88); }
+
+    /* FAQ — Pipeline "Got Questions?" */
+    .faq { padding: var(--section-pad); background: var(--bg-dark); }
+    .faq .section-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-orange); margin-bottom: 0.5rem; }
+    .faq h2 { margin-bottom: 2rem; }
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item { padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item h3 { margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600; }
+    .faq-item p { margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Final CTA — Pipeline "Ready to Claim Your Spot?" */
+    .final-cta {
+      padding: 5rem 1.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+    }
+    .final-cta h2 { margin-bottom: 0.75rem; font-size: clamp(1.5rem, 3vw, 2rem); }
+    .final-cta p { color: var(--text-muted); margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .final-cta .btn { font-size: 1.05rem; padding: 1rem 2rem; }
+
+    /* Footer */
     footer {
       text-align: center;
       padding: 2rem 1.5rem;
@@ -177,6 +281,8 @@
   </style>
 </head>
 <body>
+  <div class="top-strip">Free quotes for Wylder buyers — Port St. Lucie</div>
+
   <header class="header">
     <div class="logo">WYLDER<span>®</span></div>
     <a href="#" class="brand-link">Butcher Insurance Group</a>
@@ -185,35 +291,197 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1>Wylder Homes Insurance — Get Your Quote in 30 Seconds</h1>
-        <p class="subhead">Florida's newest master-planned gem in Port St. Lucie: Secure rates for Brystol, Four Seasons 55+, and Glynlea homes starting $350K.</p>
+        <span class="hero-badge">Get Your Quote in 30 Seconds</span>
+        <h1>Stop Overpaying for Home Insurance</h1>
+        <p class="subhead">Independent rates for Brystol, Four Seasons 55+, and Glynlea. We compare multiple carriers so you get the best coverage and price.</p>
+        <p class="hero-proof">Trusted by Wylder homeowners</p>
         <a href="#quote" class="btn btn-orange">Shop Home Rates Now</a>
       </div>
     </section>
 
-    <section class="benefits">
-      <h2>Why Insure with Butcher Insurance?</h2>
-      <ul>
-        <li><span class="star">★</span> <strong>Independent</strong> — Compares multiple carriers for best coverage & rates.</li>
-        <li><span class="star">★</span> <strong>Personalized, exceptional service</strong>, building long-term trusted relationships.</li>
-        <li><span class="star">★</span> <strong>Local community focus</strong> — they understand regional risks.</li>
-      </ul>
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">25+</div>
+          <div class="stat-label">Years Local Expertise</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">$1,200+</div>
+          <div class="stat-label">Avg. Annual Savings</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Independent Quotes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">30 sec</div>
+          <div class="stat-label">To Get Your Quote</div>
+        </div>
+      </div>
     </section>
 
-    <section class="testimonial" id="quote">
-      <h2>25 years Local Expertise: Testimonials</h2>
-      <blockquote>"Butcher locked our Brystol home rate pre-closing—wind mit saved $1,200/year!"</blockquote>
-      <p class="attribution">— <a href="#">Wylder Realtor Partner</a> ***</p>
-      <a href="#quote" class="btn btn-green">Start My Free Quote</a>
+    <section class="comparison">
+      <div class="container">
+        <h2>The Old Way vs The New Way</h2>
+        <div class="compare-grid">
+          <div class="compare-col bad">
+            <div class="compare-title">The Old Way</div>
+            <ul>
+              <li>Single-carrier quotes that limit your options</li>
+              <li>Generic rates, not tailored to Wylder homes</li>
+              <li>No wind mitigation focus — you overpay</li>
+              <li>Slow follow-up, missed savings</li>
+            </ul>
+          </div>
+          <div class="compare-col good">
+            <div class="compare-title">Butcher Insurance</div>
+            <ul>
+              <li>We compare multiple carriers for best coverage & rates</li>
+              <li>Personalized service for Brystol, Glynlea, Four Seasons</li>
+              <li>Wind mit & pre-closing locks — save $1,200+/year</li>
+              <li>Local team that responds fast and keeps you covered</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="framework">
+      <div class="container">
+        <div class="section-label">Our Process</div>
+        <h2>How We Get You the Best Rate</h2>
+        <p class="intro">A simple 3-step approach that puts you in control and saves you money.</p>
+        <div class="framework-steps">
+          <div class="framework-step">
+            <div class="num">1</div>
+            <h3>Get Your Quote</h3>
+            <p>Tell us about your Wylder home. We run quotes across multiple carriers in minutes.</p>
+          </div>
+          <div class="framework-step">
+            <div class="num">2</div>
+            <h3>Compare & Choose</h3>
+            <p>We show you options side-by-side — coverage, deductibles, and price. No pressure.</p>
+          </div>
+          <div class="framework-step">
+            <div class="num">3</div>
+            <h3>Lock Your Rate</h3>
+            <p>Lock in before closing with wind mitigation so you don't overpay. We handle the rest.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="included">
+      <div class="container">
+        <div class="section-label">What's Included</div>
+        <h2>Everything You Get With Us</h2>
+        <p class="subtitle">Your complete insurance experience, built around Wylder homes.</p>
+        <div class="included-grid">
+          <div class="included-item"><span class="icon">★</span><div><strong>Multi-Carrier Comparison</strong><span>Best coverage and rates from top carriers</span></div></div>
+          <div class="included-item"><span class="icon">★</span><div><strong>Wind Mitigation</strong><span>Pre-closing rate locks that save $1,200+/year</span></div></div>
+          <div class="included-item"><span class="icon">★</span><div><strong>Local Expertise</strong><span>25 years in Florida — we know regional risks</span></div></div>
+          <div class="included-item"><span class="icon">★</span><div><strong>Personalized Service</strong><span>One point of contact, long-term relationship</span></div></div>
+          <div class="included-item"><span class="icon">★</span><div><strong>Brystol, Glynlea & Four Seasons</strong><span>Rates tailored to your community</span></div></div>
+          <div class="included-item"><span class="icon">★</span><div><strong>Free Consultations</strong><span>No obligation. Get your quote in 30 seconds</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="difference">
+      <div class="container">
+        <div class="section-label">The Difference</div>
+        <h2>Launch With Confidence</h2>
+        <p class="tagline">Why settle for one quote when you can compare?</p>
+        <div class="diff-grid">
+          <div class="diff-col old">
+            <h3>Traditional Agents</h3>
+            <ul>
+              <li>One carrier, limited options</li>
+              <li>Generic pricing, no wind mit focus</li>
+              <li>Slower, less personal service</li>
+              <li>You may overpay without knowing</li>
+            </ul>
+          </div>
+          <div class="diff-col new">
+            <h3>Butcher Insurance Group</h3>
+            <ul>
+              <li>Independent — compares multiple carriers</li>
+              <li>Wind mitigation & pre-closing locks</li>
+              <li>Local, responsive, relationship-focused</li>
+              <li>Transparent quotes so you save</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" id="quote">
+      <div class="container">
+        <div class="section-label">Testimonials</div>
+        <h2>What Wylder Homeowners Say</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <blockquote>"Butcher locked our Brystol home rate pre-closing—wind mit saved $1,200/year!"</blockquote>
+            <div class="name">— Wylder Realtor Partner</div>
+            <div class="role">Port St. Lucie</div>
+          </div>
+          <div class="testimonial-card">
+            <blockquote>"Finally an agent who compared multiple carriers. We got better coverage for less."</blockquote>
+            <div class="name">— Wylder Homeowner</div>
+            <div class="role">Brystol</div>
+          </div>
+          <div class="testimonial-card">
+            <blockquote>"Local, fast, and they actually understand Florida wind and flood. Huge relief."</blockquote>
+            <div class="name">— Four Seasons 55+ Buyer</div>
+            <div class="role">Glynlea</div>
+          </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem;"><a href="#quote" class="btn btn-green">Start My Free Quote</a></p>
+      </div>
     </section>
 
     <section class="trust">
-      <h2>Trust Signals</h2>
-      <div class="trust-logos">
-        <span>FRONTLINE</span>
-        <span>OVATION</span>
-        <span>FLORIDA PENINSULA</span>
-        <span>Monarch.</span>
+      <div class="container">
+        <h2>Trusted Carrier Partners</h2>
+        <div class="trust-logos">
+          <span>FRONTLINE</span>
+          <span>OVATION</span>
+          <span>FLORIDA PENINSULA</span>
+          <span>Monarch</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container">
+        <div class="section-label">FAQ</div>
+        <h2>Got Questions?</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>Why use an independent agent instead of one company?</h3>
+            <p>We compare multiple carriers so you see the best coverage and price in one place. One quote often means you overpay.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What is wind mitigation and how does it save money?</h3>
+            <p>Wind mitigation credits apply when your home has certain features (roof, shutters, etc.). We help you lock in those savings before closing.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Do you only work with Wylder communities?</h3>
+            <p>We specialize in Brystol, Four Seasons 55+, and Glynlea in Port St. Lucie, but we can help other Florida homeowners too.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How fast can I get a quote?</h3>
+            <p>Often in 30 seconds. We'll get your details and run quotes across carriers so you can compare and choose.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <h2>Ready to Get Your Quote?</h2>
+        <p>Free consults for Wylder buyers. Compare rates in 30 seconds — no obligation.</p>
+        <a href="#quote" class="btn btn-orange">Get My Free Quote</a>
       </div>
     </section>
   </main>
