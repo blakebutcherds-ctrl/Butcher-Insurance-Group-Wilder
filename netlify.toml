@@ -1,0 +1,4 @@
+# Netlify config for Butcher Insurance Group - Wylder landing
+[build]
+  publish = "."
+  command = ""

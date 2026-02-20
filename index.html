@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wylder Homes Insurance | Butcher Insurance Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #1c1c1c;
+      --text: #ffffff;
+      --text-muted: #a0a0a0;
+      --accent-orange: #e86326;
+      --accent-green: #5cb85c;
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .logo span { font-size: 0.75em; vertical-align: super; }
+    .brand-link {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(40, 40, 40, 0.9);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .brand-link:hover { background: rgba(50, 50, 50, 0.95); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.5)),
+        url('wylder1.jpg') center/cover no-repeat;
+      padding: 6rem 1.5rem 4rem;
+    }
+    .hero-content { max-width: 720px; }
+    .hero h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    .hero .subhead {
+      margin: 0 0 1.75rem;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.95);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.75rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: filter 0.2s, transform 0.15s;
+    }
+    .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-orange { background: var(--accent-orange); color: white; }
+    .btn-green { background: var(--accent-green); color: white; }
+
+    /* Sections */
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    section h2 {
+      margin: 0 0 1.5rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+    }
+
+    /* Benefits */
+    .benefits ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+    .benefits li strong { color: var(--text); }
+    .star { color: var(--accent-orange); font-size: 1.1rem; flex-shrink: 0; }
+
+    /* Testimonial */
+    .testimonial blockquote {
+      margin: 0 0 1rem;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .testimonial .attribution {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .testimonial .attribution a {
+      color: var(--accent-green);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .testimonial .attribution a:hover { text-decoration: underline; }
+
+    /* Trust signals */
+    .trust h2 { text-align: center; margin-bottom: 2rem; }
+    .trust-logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .trust-logos span {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">WYLDER<span>®</span></div>
+    <a href="#" class="brand-link">Butcher Insurance Group</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Wylder Homes Insurance — Get Your Quote in 30 Seconds</h1>
+        <p class="subhead">Florida's newest master-planned gem in Port St. Lucie: Secure rates for Brystol, Four Seasons 55+, and Glynlea homes starting $350K.</p>
+        <a href="#quote" class="btn btn-orange">Shop Home Rates Now</a>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <h2>Why Insure with Butcher Insurance?</h2>
+      <ul>
+        <li><span class="star">★</span> <strong>Independent</strong> — Compares multiple carriers for best coverage & rates.</li>
+        <li><span class="star">★</span> <strong>Personalized, exceptional service</strong>, building long-term trusted relationships.</li>
+        <li><span class="star">★</span> <strong>Local community focus</strong> — they understand regional risks.</li>
+      </ul>
+    </section>
+
+    <section class="testimonial" id="quote">
+      <h2>25 years Local Expertise: Testimonials</h2>
+      <blockquote>"Butcher locked our Brystol home rate pre-closing—wind mit saved $1,200/year!"</blockquote>
+      <p class="attribution">— <a href="#">Wylder Realtor Partner</a> ***</p>
+      <a href="#quote" class="btn btn-green">Start My Free Quote</a>
+    </section>
+
+    <section class="trust">
+      <h2>Trust Signals</h2>
+      <div class="trust-logos">
+        <span>FRONTLINE</span>
+        <span>OVATION</span>
+        <span>FLORIDA PENINSULA</span>
+        <span>Monarch.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Licensed in FL | Free Consults for Wylder Buyers
+  </footer>
+</body>
+</html>
