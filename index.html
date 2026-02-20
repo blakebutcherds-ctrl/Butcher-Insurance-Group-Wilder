@@ -77,7 +77,7 @@
       justify-content: center;
       text-align: center;
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.55)),
-        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80') center/cover no-repeat;
+        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80') center/cover no-repeat;
       padding: 8rem 1.5rem 5rem;
     }
     .hero-content { max-width: 720px; }
@@ -243,6 +243,31 @@
     .testimonial-card blockquote { margin: 0 0 1rem; font-size: 0.95rem; font-style: italic; color: var(--text-muted); line-height: 1.6; }
     .testimonial-card .name { font-weight: 600; }
     .testimonial-card .role { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Image gallery — Florida / PSL homes */
+    .gallery { padding: var(--section-pad); background: var(--bg-dark); }
+    .gallery .section-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-orange); margin-bottom: 0.5rem; }
+    .gallery h2 { margin-bottom: 1rem; }
+    .gallery .subtitle { color: var(--text-muted); margin-bottom: 2rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 768px) { .gallery-grid { grid-template-columns: 1fr; } }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--bg-card);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     /* Trust signals */
     .trust { padding: var(--section-pad); background: var(--bg-card); text-align: center; }
@@ -410,6 +435,25 @@
               <li>Local, responsive, relationship-focused</li>
               <li>Transparent quotes so you save</li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <div class="container">
+        <div class="section-label">See the Community</div>
+        <h2>Florida Living — Port St. Lucie</h2>
+        <p class="subtitle">New construction and master-planned communities we help protect.</p>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="New home in Florida" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80" alt="Suburban Florida home" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&q=80" alt="Residential home Port St. Lucie style" loading="lazy" />
           </div>
         </div>
       </div>
